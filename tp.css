@@ -13,11 +13,22 @@ body {
     height: 100px;
     width: 600px;
 }
+#recording-output{
+    height: 100px;
+    width: 300px;
+}
 .part-output {
     position: absolute;
     cursor: crosshair;
 }
 .stupid-panel {
-    display : inline-block;
+    display: inline-block;
     vertical-align: top;
+    border: 1px solid #6149fb;
+    padding: 5px;
+    height: 125px;
+}
+.play-trigger {
+    cursor: pointer;
+    text-decoration: underline;
 }

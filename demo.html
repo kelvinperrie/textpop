@@ -30,11 +30,16 @@ Then I flow that a harpoon daily and nightly
         left arrow = stop<br/>
     </div>
     <div class="stupid-panel">
+            <textarea id="recording-output">
+            </textarea>
+    </div>
+    <div class="stupid-panel">
         <span class="play-trigger">do play back ok.</span>
     </div>
     <div id="output" width="100%" height="600">
 
-            asdf asdf
+            alright you have to start a recording (press right arrow key) and then click in this area to place the words, 
+            then stop the recording (left arrow), then you can do a play back, then we can all go home happy
     </div>
 
 
@@ -45,7 +50,7 @@ Then I flow that a harpoon daily and nightly
         var player = null;
 
         $(".play-trigger").on("click",function() {
-            var parts = recorder.parts;
+            var parts = JSON.parse($("#recording-output").val());
             player = new Player(parts, $("#output"));
             player.play();
         });

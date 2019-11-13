@@ -4,18 +4,16 @@ var Player = function(parts, element) {
 
     self.parts = parts;
     self.elment = element;
-    console.log(self.parts);
 
     self.play = function() {
-        console.log("going to play");
+        self.elment.html("");
         for(var i = 0 ; i < self.parts.length ; i ++) {
             var part = self.parts[i];
-            console.log("setting timout for " + part.output);
             setTimeout(self.createPartHtml, part.delay, part);
         }
     }
     self.createPartHtml = function(part) {
-        console.log("output "+part.output);
+        $('#output').append("<div id='part-output"+part.index+"' class='part-output' style='top: "+part.position.y+"px; left: "+part.position.x+"px'>"+part.output+"</div>");
     }
 }
 
@@ -30,6 +28,7 @@ var Recorder = function() {
 
     self.startRecording = function() {
         self.clearOutput();
+        self.parts = [];
         self.textForOutput = $("#text-to-output").val().split(" ");
         self.currentPartIndex = 0;
         self.startTime = new Date();
@@ -37,13 +36,13 @@ var Recorder = function() {
     }
     self.stopRecording = function() {
         self.setStatus("stopped");
+        $("#recording-output").val(JSON.stringify(self.parts));
     }
     self.setStatus = function(newStatus) {
         self.status = newStatus;
         $(".status-display").text(newStatus);
     }
     self.processKey = function(event) {
-        console.log(event);
         if ( event.which == 39 ) { // right arrow
             self.startRecording();
         } else if ( event.which == 37 ) { // left arrow
@@ -72,6 +71,7 @@ var Recorder = function() {
         var posY = $('#output').position().top;
         var position = { x : event.pageX - posX, y : event.pageY - posY - 10};
         var part = {
+            index : self.currentPartIndex,
             delay : diffTime,
             output : self.textForOutput[self.currentPartIndex],
             position : position
