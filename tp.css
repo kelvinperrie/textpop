@@ -1,0 +1,23 @@
+body {
+    margin: 0;
+}
+#output {
+    background-color: bisque;
+    height: 600px;
+    width: 100%;
+    position: relative;
+    cursor: crosshair;
+    user-select: none;
+}
+#text-to-output {
+    height: 100px;
+    width: 600px;
+}
+.part-output {
+    position: absolute;
+    cursor: crosshair;
+}
+.stupid-panel {
+    display : inline-block;
+    vertical-align: top;
+}

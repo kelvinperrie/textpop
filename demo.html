@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en-nz">
+
+<head>
+    <title></title>
+    <style>
+        html {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            background-color: #e6e6e6;
+        }
+        
+    </style>
+    <link rel="stylesheet" type="text/css" href="tp.css">
+</head>
+
+<body>
+    <div class="stupid-panel">
+            
+        <textarea id="text-to-output">
+All right stop 
+Collaborate and listen 
+Ice is back with my brand new invention 
+Something grabs a hold of me tightly 
+Then I flow that a harpoon daily and nightly 
+        </textarea>
+    </div>
+    <div class="stupid-panel">
+        Current status = <span class="status-display"></span><br/>
+        right arrow = record<br/>
+        left arrow = stop<br/>
+    </div>
+    <div class="stupid-panel">
+        <span class="play-trigger">do play back ok.</span>
+    </div>
+    <div id="output" width="100%" height="600">
+
+            asdf asdf
+    </div>
+
+
+    <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="tp.js"></script>
+    <script type="text/javascript">
+        var recorder = new Recorder();
+        var player = null;
+
+        $(".play-trigger").on("click",function() {
+            var parts = recorder.parts;
+            player = new Player(parts, $("#output"));
+            player.play();
+        });
+
+    </script>
+</body>
+
+</html>
